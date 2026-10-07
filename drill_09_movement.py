@@ -18,7 +18,7 @@ def handle_events():
 
 
 try:
-    tuk_ground = load_image(str(Path(__file__).resolve().parent / "TUK_GROUND.png"))
+    tuk_ground = load_image("TUK_GROUND.png")
     running = True
 
     while running:
