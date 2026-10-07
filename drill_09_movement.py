@@ -19,13 +19,17 @@ def handle_events():
 
 try:
     tuk_ground = load_image(str(Path(__file__).resolve().parent / "TUK_GROUND.png"))
+    character = load_image(str(Path(__file__).resolve().parent / "animation_sheet.png"))
     running = True
+    frame = 0
+    x, y = TUK_WIDTH // 2, TUK_HEIGHT // 2
 
     while running:
         handle_events()
         if running:
             clear_canvas()
             tuk_ground.draw(TUK_WIDTH // 2, TUK_HEIGHT // 2)
+            character.clip_draw(frame * 100, 300, 100, 100, x, y)
             update_canvas()
             delay(0.005)
 finally:
