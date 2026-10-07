@@ -4,6 +4,8 @@ from pico2d import *
 
 
 TUK_WIDTH, TUK_HEIGHT = 1280, 1024
+CHARACTER_HALF_WIDTH = 50
+MOVE_SPEED = 400
 open_canvas(TUK_WIDTH, TUK_HEIGHT)
 
 
@@ -23,11 +25,15 @@ try:
     running = True
     frame = 0
     x, y = TUK_WIDTH // 2, TUK_HEIGHT // 2
+    last_time = get_time()
 
     while running:
         handle_events()
         if running:
-            x = min(x + 2, TUK_WIDTH - 50)
+            current_time = get_time()
+            delta_time = current_time - last_time
+            last_time = current_time
+            x = min(x + MOVE_SPEED * delta_time, TUK_WIDTH - CHARACTER_HALF_WIDTH)
             frame = (frame + 1) % 8
             clear_canvas()
             tuk_ground.draw(TUK_WIDTH // 2, TUK_HEIGHT // 2)
