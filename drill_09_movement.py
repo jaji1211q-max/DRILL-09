@@ -40,10 +40,14 @@ try:
             last_time = current_time
             if right_pressed:
                 x = min(x + MOVE_SPEED * delta_time, TUK_WIDTH - CHARACTER_HALF_WIDTH)
-            frame = (frame + 1) % 8
+                frame = (frame + 1) % 8
+                sprite_y = 100
+            else:
+                frame = 0
+                sprite_y = 300
             clear_canvas()
             tuk_ground.draw(TUK_WIDTH // 2, TUK_HEIGHT // 2)
-            character.clip_draw(frame * 100, 100, 100, 100, x, y)
+            character.clip_draw(frame * 100, sprite_y, 100, 100, x, y)
             update_canvas()
             delay(0.005)
 finally:
