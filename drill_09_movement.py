@@ -47,6 +47,10 @@ try:
                 x = min(x + MOVE_SPEED * delta_time, TUK_WIDTH - CHARACTER_HALF_WIDTH)
                 frame = (frame + 1) % 8
                 sprite_y = 100
+            elif left_pressed:
+                x = max(x - MOVE_SPEED * delta_time, CHARACTER_HALF_WIDTH)
+                frame = (frame + 1) % 8
+                sprite_y = 100
             else:
                 frame = 0
                 sprite_y = 300
