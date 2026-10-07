@@ -38,7 +38,8 @@ try:
             current_time = get_time()
             delta_time = current_time - last_time
             last_time = current_time
-            x = min(x + MOVE_SPEED * delta_time, TUK_WIDTH - CHARACTER_HALF_WIDTH)
+            if right_pressed:
+                x = min(x + MOVE_SPEED * delta_time, TUK_WIDTH - CHARACTER_HALF_WIDTH)
             frame = (frame + 1) % 8
             clear_canvas()
             tuk_ground.draw(TUK_WIDTH // 2, TUK_HEIGHT // 2)
