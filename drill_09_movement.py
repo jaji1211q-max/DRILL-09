@@ -49,14 +49,14 @@ try:
             if right_pressed:
                 x = min(x + MOVE_SPEED * delta_time, TUK_WIDTH - CHARACTER_HALF_WIDTH)
                 frame = (frame + 1) % 8
-                sprite_y = 100
+                sprite_y = 100 if facing_right else 0
             elif left_pressed:
                 x = max(x - MOVE_SPEED * delta_time, CHARACTER_HALF_WIDTH)
                 frame = (frame + 1) % 8
-                sprite_y = 100
+                sprite_y = 100 if facing_right else 0
             else:
                 frame = 0
-                sprite_y = 300
+                sprite_y = 300 if facing_right else 200
             clear_canvas()
             tuk_ground.draw(TUK_WIDTH // 2, TUK_HEIGHT // 2)
             character.clip_draw(frame * 100, sprite_y, 100, 100, x, y)
