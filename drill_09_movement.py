@@ -10,7 +10,7 @@ open_canvas(TUK_WIDTH, TUK_HEIGHT)
 
 
 def handle_events():
-    global running, right_pressed
+    global running, right_pressed, left_pressed
 
     for event in get_events():
         if event.type == SDL_QUIT:
@@ -21,6 +21,10 @@ def handle_events():
             right_pressed = True
         elif event.type == SDL_KEYUP and event.key == SDLK_RIGHT:
             right_pressed = False
+        elif event.type == SDL_KEYDOWN and event.key == SDLK_LEFT:
+            left_pressed = True
+        elif event.type == SDL_KEYUP and event.key == SDLK_LEFT:
+            left_pressed = False
 
 
 try:
@@ -28,6 +32,7 @@ try:
     character = load_image(str(Path(__file__).resolve().parent / "animation_sheet.png"))
     running = True
     right_pressed = False
+    left_pressed = False
     frame = 0
     x, y = TUK_WIDTH // 2, TUK_HEIGHT // 2
     last_time = get_time()
