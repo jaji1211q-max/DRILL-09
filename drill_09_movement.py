@@ -5,6 +5,7 @@ from pico2d import *
 
 TUK_WIDTH, TUK_HEIGHT = 1280, 1024
 CHARACTER_HALF_WIDTH = 50
+CHARACTER_HALF_HEIGHT = 50
 MOVE_SPEED = 400
 open_canvas(TUK_WIDTH, TUK_HEIGHT)
 
@@ -60,7 +61,7 @@ try:
                 frame = (frame + 1) % 8
                 sprite_y = 100 if facing_right else 0
             elif up_pressed:
-                y = min(y + MOVE_SPEED * delta_time, TUK_HEIGHT - CHARACTER_HALF_WIDTH)
+                y = min(y + MOVE_SPEED * delta_time, TUK_HEIGHT - CHARACTER_HALF_HEIGHT)
                 frame = (frame + 1) % 8
                 sprite_y = 100 if facing_right else 0
             else:
