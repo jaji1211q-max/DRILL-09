@@ -10,7 +10,7 @@ open_canvas(TUK_WIDTH, TUK_HEIGHT)
 
 
 def handle_events():
-    global running, right_pressed, left_pressed, facing_right
+    global running, right_pressed, left_pressed, up_pressed, facing_right
 
     for event in get_events():
         if event.type == SDL_QUIT:
@@ -27,6 +27,10 @@ def handle_events():
             facing_right = False
         elif event.type == SDL_KEYUP and event.key == SDLK_LEFT:
             left_pressed = False
+        elif event.type == SDL_KEYDOWN and event.key == SDLK_UP:
+            up_pressed = True
+        elif event.type == SDL_KEYUP and event.key == SDLK_UP:
+            up_pressed = False
 
 
 try:
@@ -35,6 +39,7 @@ try:
     running = True
     right_pressed = False
     left_pressed = False
+    up_pressed = False
     facing_right = True
     frame = 0
     x, y = TUK_WIDTH // 2, TUK_HEIGHT // 2
