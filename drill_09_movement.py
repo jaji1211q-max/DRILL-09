@@ -27,9 +27,11 @@ try:
     while running:
         handle_events()
         if running:
+            x = min(x + 2, TUK_WIDTH - 50)
+            frame = (frame + 1) % 8
             clear_canvas()
             tuk_ground.draw(TUK_WIDTH // 2, TUK_HEIGHT // 2)
-            character.clip_draw(frame * 100, 300, 100, 100, x, y)
+            character.clip_draw(frame * 100, 100, 100, 100, x, y)
             update_canvas()
             delay(0.005)
 finally:
