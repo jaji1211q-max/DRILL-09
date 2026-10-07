@@ -5,7 +5,6 @@ from pico2d import *
 
 TUK_WIDTH, TUK_HEIGHT = 1280, 1024
 open_canvas(TUK_WIDTH, TUK_HEIGHT)
-tuk_ground = load_image(str(Path(__file__).resolve().parent / "TUK_GROUND.png"))
 
 
 def handle_events():
@@ -18,14 +17,16 @@ def handle_events():
             running = False
 
 
-running = True
+try:
+    tuk_ground = load_image(str(Path(__file__).resolve().parent / "TUK_GROUND.png"))
+    running = True
 
-while running:
-    handle_events()
-    if running:
-        clear_canvas()
-        tuk_ground.draw(TUK_WIDTH // 2, TUK_HEIGHT // 2)
-        update_canvas()
-        delay(0.005)
-
-close_canvas()
+    while running:
+        handle_events()
+        if running:
+            clear_canvas()
+            tuk_ground.draw(TUK_WIDTH // 2, TUK_HEIGHT // 2)
+            update_canvas()
+            delay(0.005)
+finally:
+    close_canvas()
